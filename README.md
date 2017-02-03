@@ -3,10 +3,10 @@ Automated animation for scikit-learn's t-sne algorithm
 
 Easy to use:  
 ```
-$pip install tsne_animate
+$ pip install tsne_animate
 ```
 
-```
+```python
 from sklearn import datasets, manifold
 from tsne_animate import tsneAnimate
 digits = datasets.load_digits()
@@ -16,7 +16,7 @@ tsne.animate(digits.data,digits.target,'digits.gif')
 
 ![digits](https://github.com/hardkun/tsne_animate/blob/master/examples/digits.gif)
 
-```
+```python
 from sklearn import datasets, manifold
 from tsne_animate import tsneAnimate
 iris = datasets.load_iris()

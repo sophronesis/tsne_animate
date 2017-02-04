@@ -1,11 +1,20 @@
 # tsne_animate
 Automated animation for scikit-learn's t-sne algorithm
 
-Easy to use:  
+
+
+Requirements:
+```
+ffmpeg or mencoder to save gifs
+```
+
+
+Easy to install:  
 ```
 $ pip install tsne_animate
 ```
 
+Easy to use:
 ```python
 from sklearn import datasets, manifold
 from tsne_animate import tsneAnimate

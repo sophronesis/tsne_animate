@@ -5,7 +5,6 @@ import matplotlib.colors as colors
 import matplotlib.cm as cmx
 from matplotlib.animation import FuncAnimation
 import sklearn
-from tqdm import tqdm_notebook
 from sklearn import manifold
 from numpy import linalg
 
@@ -93,7 +92,7 @@ class tsneAnimate():
         sklearn.manifold.t_sne._gradient_descent = old_grad
         return positions
     
-    def animate(self,X,y,filename='animate.gif',useTqdm=0):
+    def animate(self,X,y,useTqdm=0,filename=None):
         pos = self.getSteps(X,y)
         y_mapping = {i:n for n,i in enumerate(set(y))}
         
@@ -119,7 +118,7 @@ class tsneAnimate():
         def init():
             ax.set_xlim([lims[0][0],lims[1][0]])
             ax.set_ylim([lims[0][1],lims[1][1]])
-            return (*dots_list),
+            return [i for i in dots_list]
 
         def update(i):
             for j in range(len(dots_list)):
@@ -127,7 +126,7 @@ class tsneAnimate():
                 a,b = a[y == j],b[y == j]
                 dots_list[j].set_xdata(a)
                 dots_list[j].set_ydata(b) 
-            return (*dots_list), ax
+            return [i for i in dots_list]+[ax]
 
         if useTqdm==0:
             frames = np.arange(0, len(pos)-1)
@@ -139,4 +138,7 @@ class tsneAnimate():
             frames = tqdm_notebook(np.arange(0, len(pos)-1))
         
         anim = FuncAnimation(fig, update, frames=frames, init_func=init, interval=50)
-        anim.save(filename, dpi=80, writer='imagemagick')
+        if filename==None:
+            plt.show()
+        else:
+            anim.save(filename, dpi=80, writer='imagemagick')

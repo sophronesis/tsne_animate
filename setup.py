@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='tsne_animate',
-      version='0.1',
+      version='0.1.1',
       description='Automated animation for scikit-learn\'s t-sne algorithm',
       url='https://github.com/hardkun/tsne_animate',
       author='Oleksandr Buzynnyi',

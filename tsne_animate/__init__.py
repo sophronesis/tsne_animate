@@ -92,7 +92,7 @@ class tsneAnimate():
         sklearn.manifold.t_sne._gradient_descent = old_grad
         return positions
     
-    def animate(self,X,y,useTqdm=0,filename=None):
+    def animate(self,X,y,useTqdm=0,filename=None,return_anim=True):
         pos = self.getSteps(X,y)
         y_mapping = {i:n for n,i in enumerate(set(y))}
         
@@ -138,7 +138,10 @@ class tsneAnimate():
             frames = tqdm_notebook(np.arange(0, len(pos)-1))
         
         anim = FuncAnimation(fig, update, frames=frames, init_func=init, interval=50)
+        if return_anim:
+            return anim
         if filename==None:
             plt.show()
         else:
+            #anim.save(filename, fps=20, codec='libx264')
             anim.save(filename, dpi=80, writer='imagemagick')

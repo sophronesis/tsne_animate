@@ -1,4 +1,4 @@
-# tsne_animate
+# tsne_animate (0.1.4)
 Automated animation for scikit-learn's t-sne algorithm
 
 

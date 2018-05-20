@@ -1,6 +1,9 @@
 # tsne_animate (0.1.4)
-Automated animation for scikit-learn's t-sne algorithm
+Animation generation for scikit-learn's t-sne algorithm
 
+Strong advice - use tensorboard, it's not so complicated. 
+
+But if you want dirty quick visualisation - here we go.
 
 
 Requirements:

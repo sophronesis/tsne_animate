@@ -14,7 +14,7 @@ class tsneAnimate():
         self.isfit = False
     def getSteps(self,X,y):
         #based on https://github.com/oreillymedia/t-SNE-tutorial
-        old_grad = sklearn.manifold.t_sne._gradient_descent
+        old_grad = sklearn.manifold._t_sne._gradient_descent
         positions = []
         def _gradient_descent(objective, p0, it, n_iter, objective_error=None,
                               n_iter_check=1, n_iter_without_progress=50,
@@ -85,11 +85,11 @@ class tsneAnimate():
             return p, error, i
 
         #Replace old gradient func
-        sklearn.manifold.t_sne._gradient_descent = _gradient_descent
+        sklearn.manifold._t_sne._gradient_descent = _gradient_descent
         X_proj = self.tsne.fit_transform(X)
         self.isfit = True
         #return old gradient descent back
-        sklearn.manifold.t_sne._gradient_descent = old_grad
+        sklearn.manifold._t_sne._gradient_descent = old_grad
         return positions
     
     def animate(self,X,y,useTqdm=0,filename=None,return_anim=True):

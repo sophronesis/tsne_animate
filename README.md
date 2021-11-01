@@ -33,7 +33,7 @@ from sklearn import datasets, manifold
 from tsne_animate import tsneAnimate
 iris = datasets.load_iris()
 tsne = tsneAnimate(manifold.TSNE(learning_rate=50))
-tsne.animate(iris.data,iris.target,0,'iris.gif')
+tsne.animate(iris.data,iris.target,'iris.gif',0)
 ```
 
 ![iris](https://github.com/hardkun/tsne_animate/blob/master/examples/iris.gif)
